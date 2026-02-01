@@ -1,7 +1,7 @@
 (function () {
 
-    const glbFile = "models/Pizza.glb";
-    const usdzFile = "models/Pizza.usdz";
+    const glbFile = "Models/Pizza.glb";
+    const usdzFile = "Models/Pizza.usdz";
 
     const ua = navigator.userAgent || navigator.vendor || window.opera;
 
