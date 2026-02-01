@@ -1,7 +1,7 @@
 (function () {
 
-    const glbFile = "Models/Burger.glb";
-    const usdzFile = "Models/Burger.usdz";
+    const glbFile = "Models/Garlic_Bread.glb";
+    const usdzFile = "Models/Garlic_Bread.usdz";
 
     const ua = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -16,7 +16,7 @@
     // ---------- Android ----------
     if (/android/i.test(ua)) {
 
-        const fullGlbUrl = location.origin + "/Tea_Post/Burger/" + glbFile;
+        const fullGlbUrl = location.origin + "/Tea_Post/Garlic_Bread/" + glbFile;
 
         const sceneViewerIntent =
             "intent://arvr.google.com/scene-viewer/1.0" +
