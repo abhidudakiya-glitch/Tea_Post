@@ -16,7 +16,7 @@
     // ---------- Android ----------
     if (/android/i.test(ua)) {
 
-        const fullGlbUrl = location.origin + "/Tea_Post/" + glbFile;
+        const fullGlbUrl = location.origin + "/Tea_Post/Pizza/" + glbFile;
 
         const sceneViewerIntent =
             "intent://arvr.google.com/scene-viewer/1.0" +
