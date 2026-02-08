@@ -5,10 +5,6 @@
   <title>AR Product Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Prevent caching issues -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-
-  <!-- Model Viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <style>
@@ -17,9 +13,6 @@
       font-family: sans-serif;
       text-align: center;
       background: #f0f0f0;
-    }
-    h2 {
-      margin: 10px 0;
     }
     model-viewer {
       width: 100%;
@@ -30,7 +23,7 @@
 
 <body>
   <h2>3D Preview</h2>
-  <div id="app">Loading…</div>
+  <div id="app">Loading model...</div>
 
   <script src="script.js"></script>
 </body>
