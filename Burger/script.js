@@ -1,42 +1,29 @@
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<script>
 (function () {
+  const glbFile = "Models/Burger.glb";
+  const usdzFile = "Models/Burger.usdz";
 
-  const isAndroid = /Android/i.test(navigator.userAgent);
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-  const glbUrl =
-    "https://abhidudakiya-glitch.github.io/Tea_Post/Burger/Models/Burger.glb";
-
-  const usdzUrl =
-    "https://abhidudakiya-glitch.github.io/Tea_Post/Burger/Models/Burger.usdz";
-
-
-  // 🍎 iOS → AR Quick Look
-  if (isIOS) {
-    window.location.href = usdzUrl;
+  // iOS: open USDZ in Quick Look (this is the only reliable way on iPhone)
+  if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+    window.location.href = usdzFile;
     return;
   }
 
-
-  // 🤖 Android → Scene Viewer AR only
-  if (isAndroid) {
-
-    const sceneViewerUrl =
-      "intent://arvr.google.com/scene-viewer/1.0" +
-      "?file=" + encodeURIComponent(glbUrl) +
-      "&mode=ar_only" +              // 👈 Forces AR
-      "&resizable=false" +          // 👈 No scale UI
-      "#Intent;scheme=https;" +
-      "package=com.google.ar.core;" +
-      "action=android.intent.action.VIEW;" +
-      "end;";
-
-    window.location.href = sceneViewerUrl;
-    return;
-  }
-
-
-  // Desktop fallback
-  document.body.innerHTML =
-    "Open this link on Android or iPhone to view in AR.";
-
+  // Android + Desktop: use in-page model-viewer (NO Scene Viewer, NO intent)
+  document.body.innerHTML = `
+    <h2 style="text-align:center">3D Preview</h2>
+    <model-viewer
+      src="${glbFile}"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      camera-controls
+      auto-rotate
+      style="width: 100%; height: 80vh; background: #f0f0f0;">
+    </model-viewer>
+  `;
 })();
+</script>
