@@ -1,6 +1,6 @@
 (function () {
-  const glbFile = "Models/Burger.glb";
-  const usdzFile = "Models/Burger.usdz";
+  const glbFile = "Models/Sandwich.glb";
+  const usdzFile = "Models/Sandwich.usdz";
 
   const ua = navigator.userAgent || navigator.vendor || window.opera;
 
