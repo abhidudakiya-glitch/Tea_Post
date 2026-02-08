@@ -1,47 +1,56 @@
 (function () {
 
-    const glbFile = "Models/Burger.glb";
-    const usdzFile = "Models/Burger.usdz";
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
+  // 🔗 ABSOLUTE FILE URLS (GitHub Pages)
+  const glbUrl =
+    "https://abhidudakiya-glitch.github.io/Tea_Post/Burger/Models/Burger.glb";
 
-    // ---------- iOS (iPhone / iPad) ----------
-    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+  const usdzUrl =
+    "https://abhidudakiya-glitch.github.io/Tea_Post/Burger/Models/Burger.usdz";
 
-        // Open USDZ directly in AR Quick Look
-        window.location.replace(usdzFile);
-        return;
-    }
 
-    // ---------- Android ----------
-    if (/android/i.test(ua)) {
+  // 🍎 iOS → Quick Look
+  if (isIOS) {
+    window.location.replace(usdzUrl);
+    return;
+  }
 
-        const fullGlbUrl = location.origin + "/Tea_Post/Burger/" + glbFile;
 
-        const sceneViewerIntent =
-            "intent://arvr.google.com/scene-viewer/1.0" +
-            "?file=" + encodeURIComponent(fullGlbUrl) +
-            "&mode=ar_only" +
-            "#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;";
+  // 🤖 Android → Scene Viewer
+  if (isAndroid) {
 
-        window.location.replace(sceneViewerIntent);
-        return;
-    }
+    const intentUrl =
+      "intent://arvr.google.com/scene-viewer/1.0" +
+      "?file=" + encodeURIComponent(glbUrl) +
+      "&mode=ar_only" +
+      "#Intent;scheme=https;" +
+      "package=com.google.ar.core;" +
+      "action=android.intent.action.VIEW;" +
+      "end;";
 
-    // ---------- Desktop fallback ----------
-    document.body.innerHTML = `
-        <h2 style="text-align:center;">3D Preview (AR on mobile)</h2>
+    window.location.replace(intentUrl);
+    return;
+  }
 
-        <model-viewer
-            src="${glbFile}"
-            auto-rotate
-            camera-controls
-            style="width:100%; height:500px;">
-        </model-viewer>
 
-        <script type="module"
-            src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
-        </script>
-    `;
+  // 💻 Desktop fallback
+  document.body.innerHTML = `
+    <h2 style="text-align:center">
+      3D Preview (Open on Mobile for AR)
+    </h2>
+
+    <model-viewer
+      src="${glbUrl}"
+      auto-rotate
+      camera-controls
+      style="width:100%; height:500px;">
+    </model-viewer>
+
+    <script type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
+  `;
 
 })();
