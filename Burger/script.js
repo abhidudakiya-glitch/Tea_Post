@@ -4,7 +4,7 @@
 
   const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-  // iOS: still use Quick Look (Apple forces this)
+  // iOS: Apple forces Quick Look
   if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
     window.location.href = usdzFile;
     return;
@@ -17,7 +17,7 @@
       id="viewer"
       src="${glbFile}"
       ar
-      ar-modes="webxr scene-viewer quick-look"
+      ar-modes="webxr"   <!-- 🚨 ONLY webxr, no scene-viewer, no quick-look -->
       camera-controls
       auto-rotate
       style="width:100%; height:80vh; background:#fff;">
@@ -40,16 +40,19 @@
   const viewer = document.getElementById("viewer");
   const btn = document.getElementById("previewBtn");
 
-  // Wait until model-viewer is ready, then enter AR automatically
-  viewer.addEventListener("load", () => {
+  // Try to enter AR automatically
+  viewer.addEventListener("load", async () => {
     if (viewer.canActivateAR) {
-      viewer.activateAR(); // 🔥 Auto-launch AR
+      try {
+        await viewer.activateAR();
+      } catch (e) {
+        console.log("Auto AR blocked by browser, user interaction needed.");
+      }
     }
   });
 
-  // Button: exit AR and show normal 3D view
+  // Exit AR → show 3D
   btn.addEventListener("click", () => {
-    // This exits AR and returns to 3D preview
     if (document.fullscreenElement) {
       document.exitFullscreen();
     }
