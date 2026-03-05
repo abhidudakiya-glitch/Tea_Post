@@ -26,8 +26,8 @@ height:80vh;
 
 .ar-tip{
 position:fixed;
-bottom:42px;   /* aligns vertically with AR button */
-right:75px;    /* space from AR button */
+bottom:42px;      /* Android alignment */
+right:75px;
 font-size:14px;
 font-weight:600;
 color:#333;
@@ -53,6 +53,14 @@ animation: bounce 1s infinite;
 0%{transform:translateX(0);}
 50%{transform:translateX(5px);}
 100%{transform:translateX(0);}
+}
+
+/* iPhone Safari fix */
+
+@supports (-webkit-touch-callout: none) {
+  .ar-tip{
+    bottom:55px;   /* slightly higher for iPhone */
+  }
 }
 
 </style>
