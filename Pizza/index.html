@@ -22,12 +22,12 @@ width:100%;
 height:80vh;
 }
 
-/* Instruction near AR button */
+/* Instruction beside AR button */
 
 .ar-tip{
 position:fixed;
-bottom:100px;
-right:20px;
+bottom:42px;      /* Android alignment */
+right:75px;
 font-size:14px;
 font-weight:600;
 color:#333;
@@ -36,19 +36,31 @@ padding:6px 12px;
 border-radius:20px;
 box-shadow:0 3px 8px rgba(0,0,0,0.2);
 z-index:9999;
+display:flex;
+align-items:center;
+gap:6px;
+pointer-events:none;
 }
 
-/* Arrow animation */
+/* arrow animation */
 
 .arrow{
-font-size:18px;
-animation: move 1s infinite;
+font-size:16px;
+animation: bounce 1s infinite;
 }
 
-@keyframes move{
+@keyframes bounce{
 0%{transform:translateX(0);}
-50%{transform:translateX(6px);}
+50%{transform:translateX(5px);}
 100%{transform:translateX(0);}
+}
+
+/* iPhone Safari fix */
+
+@supports (-webkit-touch-callout: none) {
+  .ar-tip{
+    bottom:55px;   /* slightly higher for iPhone */
+  }
 }
 
 </style>
@@ -59,13 +71,13 @@ animation: move 1s infinite;
 
 <h2>3D Preview</h2>
 
-<!-- YOUR ORIGINAL MODEL LOADER -->
 <div id="app">Loading model...</div>
 
-<!-- Instruction -->
+<!-- Instruction beside AR button -->
+
 <div class="ar-tip">
-<div class="arrow">➡️</div>
-<div>Click to place on Table</div>
+Click to place on Table
+<span class="arrow">➡️</span>
 </div>
 
 <script src="script.js"></script>
