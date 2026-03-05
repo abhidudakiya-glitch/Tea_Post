@@ -26,7 +26,7 @@ height:80vh;
 
 .ar-tip{
 position:fixed;
-bottom:42px;      /* Android alignment */
+bottom:42px;   /* Android alignment */
 right:75px;
 font-size:14px;
 font-weight:600;
@@ -46,7 +46,7 @@ pointer-events:none;
 
 .arrow{
 font-size:16px;
-animation: bounce 1s infinite;
+animation:bounce 1s infinite;
 }
 
 @keyframes bounce{
@@ -55,11 +55,11 @@ animation: bounce 1s infinite;
 100%{transform:translateX(0);}
 }
 
-/* iPhone Safari fix */
+/* iPhone Safari adjustment */
 
 @supports (-webkit-touch-callout: none) {
   .ar-tip{
-    bottom:62px;   /* slightly higher for iPhone */
+    bottom:62px;   /* raise more for iPhone */
   }
 }
 
