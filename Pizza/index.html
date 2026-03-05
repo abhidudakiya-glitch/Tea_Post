@@ -26,7 +26,7 @@ height:80vh;
 
 .ar-tip{
 position:fixed;
-bottom:42px;   /* Android alignment */
+bottom:calc(42px + env(safe-area-inset-bottom));
 right:75px;
 font-size:14px;
 font-weight:600;
