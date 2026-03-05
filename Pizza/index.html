@@ -22,28 +22,28 @@ width:100%;
 height:80vh;
 }
 
-/* AR instruction container */
-.ar-guide{
+/* Instruction near AR button */
+.ar-tip{
 position:fixed;
-bottom:90px;
-right:20px;
-display:flex;
-align-items:center;
-gap:8px;
+top:120px;
+right:80px;
 font-size:14px;
 font-weight:600;
 color:#333;
+display:flex;
+align-items:center;
+gap:6px;
 }
 
 /* Arrow animation */
 .arrow{
 font-size:22px;
-animation: bounce 1s infinite;
+animation: move 1s infinite;
 }
 
-@keyframes bounce{
+@keyframes move{
 0%{transform:translateX(0);}
-50%{transform:translateX(-6px);}
+50%{transform:translateX(6px);}
 100%{transform:translateX(0);}
 }
 
@@ -57,10 +57,10 @@ animation: bounce 1s infinite;
 
 <div id="app">Loading model...</div>
 
-<!-- AR Instruction -->
-<div class="ar-guide">
+<!-- Instruction pointing to AR cube -->
+<div class="ar-tip">
+<div class="arrow">➡️</div>
 <div>Click to place on Table</div>
-<div class="arrow">⬇️</div>
 </div>
 
 <script src="script.js"></script>
