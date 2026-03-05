@@ -1,30 +1,26 @@
 (function () {
-  const glbFile = "Models/Pizza.glb";
-  const usdzFile = "Models/Pizza.usdz";
 
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
+const glbFile = "Models/Pizza.glb";
+const usdzFile = "Models/Pizza.usdz";
 
-  // iOS: redirect to USDZ
-  if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-    window.location.href = usdzFile;
-    return;
-  }
+const app = document.getElementById("app");
 
-  // Android + Desktop: show model in page
-  const app = document.getElementById("app");
-
-  if (!app) {
+if (!app) {
     alert("ERROR: #app div not found");
     return;
-  }
+}
 
-  app.innerHTML = `
-    <model-viewer
-      src="${glbFile}"
-      ar
-      camera-controls
-      auto-rotate
-      style="background:#fff;">
-    </model-viewer>
-  `;
+app.innerHTML = `
+<model-viewer
+src="${glbFile}"
+ios-src="${usdzFile}"
+ar
+ar-modes="scene-viewer quick-look webxr"
+camera-controls
+auto-rotate
+shadow-intensity="1"
+style="width:100%; height:80vh; background:#fff;">
+</model-viewer>
+`;
+
 })();
