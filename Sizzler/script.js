@@ -1,7 +1,7 @@
 (function () {
 
-const glbFile = "Models/Sizzler1.glb";
-const usdzFile = "Models/Sizzler1.usdz";
+const glbFile = "Models/Sizzler.glb";
+const usdzFile = "Models/Sizzler.usdz";
 
 const app = document.getElementById("app");
 
